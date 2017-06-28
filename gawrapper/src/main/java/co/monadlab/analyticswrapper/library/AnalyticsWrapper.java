@@ -18,6 +18,14 @@ import retrofit2.Response;
  * Created by WaiLynnZaw on 6/28/17.
  */
 
+/**
+  This project is work in progress
+ */
+// TODO
+//change the UUID thing.
+//change the app identifier, screen resolution
+//remove logs
+
 public class AnalyticsWrapper {
   private String trackerId;
   private final String TAG = getClass().getName();
