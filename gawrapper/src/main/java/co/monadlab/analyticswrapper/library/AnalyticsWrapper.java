@@ -8,7 +8,6 @@ import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.UUID;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -26,27 +25,16 @@ public class AnalyticsWrapper {
   private String trackerId;
   private final String TAG = "co.monadlab.gawrapper";
   private Context context;
-  private static boolean quietMode = true;
+  private  boolean quietMode = true;
+  private  String uuid = "";
 
-  private static AnalyticsWrapper wrapper;
-
-  public static synchronized void initialize(Context context, String trackerId){
-    wrapper = new AnalyticsWrapper(context,trackerId );
+  private AnalyticsWrapper(Builder builder){
+    this.context = builder.context;
+    this.trackerId = builder.trackerId;
+    this.quietMode = builder.quietMode;
+    this.uuid = builder.uuid;
   }
-
-  public static AnalyticsWrapper getWrapper(){
-    return wrapper;
-  }
-
-  AnalyticsWrapper(Context context, String trackerId){
-    this.context = context;
-    this.trackerId = trackerId;
-  }
-
-  public static void showLogs(){
-    quietMode = false;
-  }
-
+  
   public void screenView(String name){
     HashMap<String, Object> data = new HashMap<>();
     data.put("cd", name);
@@ -85,7 +73,7 @@ public class AnalyticsWrapper {
               (String)pm.getApplicationLabel(pm.getApplicationInfo(appId, PackageManager.GET_META_DATA));
       queryArguments.put("tid", trackerId);
       queryArguments.put("aid", appId); // app Identifier
-      queryArguments.put("cid", UUID.randomUUID().toString()); // Unique User Identifier
+      queryArguments.put("cid", uuid); // Unique User Identifier
       queryArguments.put("an", appName); // App Name
       queryArguments.put("av", pi.versionName); // Formatted Version
       queryArguments.put("ul", getUserLocale()); // User Language
@@ -145,5 +133,31 @@ public class AnalyticsWrapper {
         Log.e("Client", t.getLocalizedMessage());
       }
     };
+  }
+  public static class Builder{
+    private String trackerId;
+    private String uuid;
+    private boolean quietMode;
+    private Context context;
+
+    public Builder(Context context){
+      this.context = context;
+    }
+
+    public Builder trackerId(String trackerId){
+      this.trackerId = trackerId;
+      return this;
+    }
+    public Builder uuid(String uuid){
+      this.uuid = uuid;
+      return this;
+    }
+    public Builder quietMode(boolean quietMode){
+      this.quietMode = quietMode;
+      return this;
+    }
+    public AnalyticsWrapper build() {
+      return new AnalyticsWrapper(this);
+    }
   }
 }

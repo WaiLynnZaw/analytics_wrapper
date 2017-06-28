@@ -3,6 +3,8 @@ package co.monadlab.analyticswrapper;
 import android.app.Application;
 import android.content.Context;
 
+import java.util.UUID;
+
 import co.monadlab.analyticswrapper.library.AnalyticsWrapper;
 
 /**
@@ -12,15 +14,21 @@ import co.monadlab.analyticswrapper.library.AnalyticsWrapper;
 public class MyApp extends Application {
   private static final String GA_PROPERTY_ID = "UA-101789214-1";
   private static MyApp instance;
-
+  private static AnalyticsWrapper wrapper;
   @Override
   public void onCreate() {
     super.onCreate();
     instance = this;
-    AnalyticsWrapper.initialize(getContext(),GA_PROPERTY_ID);
-    AnalyticsWrapper.showLogs();
+    wrapper = new AnalyticsWrapper.Builder(getContext())
+            .trackerId(GA_PROPERTY_ID)
+            .quietMode(false)
+            .uuid(UUID.randomUUID().toString())
+            .build();
   }
   private static Context getContext(){
     return instance;
+  }
+  public static AnalyticsWrapper getWrapper(){
+    return wrapper;
   }
 }
