@@ -21,11 +21,6 @@ android {
         abortOnError false
     }
 }
-repositories {
-    maven {
-        url  "http://dl.bintray.com/wailynnzaw/maven"
-    }
-}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')

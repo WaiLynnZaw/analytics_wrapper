@@ -8,13 +8,7 @@ Easily integrate Google Analytics into your android app without downloading any 
 
 
 ### Add this line to your module ```build.gradle```
-```
-repositories {
-  maven {
-    url "http://dl.bintray.com/wailynnzaw/maven"
-  }
-}
-	
+```	
 compile 'co.monadlab.wailynnzaw:gawrapper:0.0.2'
 ```
 ## Usage
