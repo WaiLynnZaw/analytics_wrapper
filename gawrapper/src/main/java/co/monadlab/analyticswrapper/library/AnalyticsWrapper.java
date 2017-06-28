@@ -34,7 +34,7 @@ public class AnalyticsWrapper {
     this.quietMode = builder.quietMode;
     this.uuid = builder.uuid;
   }
-  
+
   public void screenView(String name){
     HashMap<String, Object> data = new HashMap<>();
     data.put("cd", name);

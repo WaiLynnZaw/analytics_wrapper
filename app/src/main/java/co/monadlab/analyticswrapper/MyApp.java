@@ -22,7 +22,7 @@ public class MyApp extends Application {
     wrapper = new AnalyticsWrapper.Builder(getContext())
             .trackerId(GA_PROPERTY_ID)
             .quietMode(false)
-            .uuid(UUID.randomUUID().toString())
+            .uuid(UUID.randomUUID().toString()) // Should be saved with preferences for UUID
             .build();
   }
   private static Context getContext(){
