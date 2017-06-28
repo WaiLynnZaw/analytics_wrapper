@@ -25,8 +25,8 @@ task clean(type: Delete) {
 ext {
 
     ARTIFACT_ID = 'gawrapper'
-    VERSION_NAME = '0.0.1'
-    VERSION_CODE = 1 //your version
+    VERSION_NAME = '0.0.2'
+    VERSION_CODE = 2 //your version
 
     DESCRIPTION = 'Library that wraps the measurement collection api'
 

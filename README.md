@@ -8,62 +8,37 @@ Easily integrate Google Analytics into your android app without downloading any 
 
 
 ### Add this line to your module ```build.gradle```
-	repositories {
-    	maven {
-    		url "http://dl.bintray.com/wailynnzaw/maven"
-    	}
-	}
+```
+repositories {
+  maven {
+    url "http://dl.bintray.com/wailynnzaw/maven"
+  }
+}
 	
-    compile 'co.monadlab.wailynnzaw:gawrapper:0.0.1'
+compile 'co.monadlab.wailynnzaw:gawrapper:0.0.2'
+```
 ## Usage
-#### In your application class,
+#### In your application class's onCreate,
 
 ```swift
-  private static final String GA_PROPERTY_ID = "UA-XXXXX-XX";
-
-  static AnalyticsWrapper wrapper;
-
-  private static Application instance;
-
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    instance = this;
-    initialize();
-  }
-
-  private static Context getContext(){
-    return instance;
-  }
-
-
-  public static synchronized void initialize() {
-    wrapper = new AnalyticsWrapper(getContext(),GA_PROPERTY_ID);
-  }
-
-  public static AnalyticsWrapper getWrapper() {
-    return wrapper;
-  }
+  wrapper = new AnalyticsWrapper.Builder(getContext())
+            .trackerId(GA_PROPERTY_ID)
+            .quietMode(false)
+            .uuid(UUID.randomUUID().toString()) // Should be saved with preferences for UUID
+            .build();
 ```
 
-
-
-You can track any event you wish to using the ``event()`` method on the ``GAWrapper``. Example:
+``GAWrapper`` ``screenView()`` and ``event()``. Example:
 
 ```
-Application
-    .getWrapper()
-    .event("Auth", "Login", "Login Completed", data);
-```
+Application.getWrapper().screenView("AnalyticsExample");
 
-You can use ``screenView()`` method on the ``GAWrapper`` to track screens Example:
+Application.getWrapper()
+    .event("Auth", "Login", "Login Completed", 0);
+
 
 ```
-Application
-    .getWrapper()
-    .screenView("MainActivity", data);
-```
-
+#### See example for detail usage.
 
 ## License
 
