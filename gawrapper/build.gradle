@@ -11,13 +11,13 @@ buildscript {
 }
 
 publish {
-    groupId = 'com.github.wailynnzaw'
-    artifactId = 'library'
+    groupId = 'co.monadlab.wailynnzaw'
+    artifactId = 'gawrapper'
     publishVersion = '0.0.1'
     desc = 'Library that wraps the measurement collection api'
     licences = ['Apache-2.0']
     uploadName='GAWrappper'
-    website = 'https://github.com/WaiLynnZaw/analytics_wrapper.git'
+    website = 'https://github.com/WaiLynnZaw/analytics_wrapper'
 }
 
 android {
@@ -38,6 +38,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 

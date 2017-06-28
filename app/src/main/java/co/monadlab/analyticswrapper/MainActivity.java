@@ -14,6 +14,5 @@ public class MainActivity extends AppCompatActivity {
     data.put("Foo","Bar");
     MyApp.getWrapper().screenView("Main", data);
     MyApp.getWrapper().event("Main", "Test", "Testing Wrapper", data);
-
   }
 }

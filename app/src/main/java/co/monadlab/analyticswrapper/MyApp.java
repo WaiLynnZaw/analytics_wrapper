@@ -10,7 +10,7 @@ import co.monadlab.analyticswrapper.library.AnalyticsWrapper;
  */
 
 public class MyApp extends Application {
-  private static final String GA_PROPERTY_ID = "UA-86936848-3";
+  private static final String GA_PROPERTY_ID = "UA-101789214-1";
 
   static AnalyticsWrapper wrapper;
 

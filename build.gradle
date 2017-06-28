@@ -24,7 +24,7 @@ task clean(type: Delete) {
 }
 ext {
 
-    ARTIFACT_ID = 'library'
+    ARTIFACT_ID = 'gawrapper'
     VERSION_NAME = '0.0.1'
     VERSION_CODE = 1 //your version
 
@@ -36,7 +36,7 @@ ext {
     COMPILE_SDK = 25
     BUILD_TOOLS = '25.0.2'
 
-    MODULE_NAME = 'library'
+    MODULE_NAME = 'gawrapper'
 
     LICENSE = 'Apache-2.0'
 
