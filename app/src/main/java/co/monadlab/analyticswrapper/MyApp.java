@@ -10,29 +10,17 @@ import co.monadlab.analyticswrapper.library.AnalyticsWrapper;
  */
 
 public class MyApp extends Application {
-  private static final String GA_PROPERTY_ID = "UA-XXXXXXXXX-X";
-
-  static AnalyticsWrapper wrapper;
-
+  private static final String GA_PROPERTY_ID = "UA-101789214-1";
   private static MyApp instance;
 
   @Override
   public void onCreate() {
     super.onCreate();
     instance = this;
-    initialize();
+    AnalyticsWrapper.initialize(getContext(),GA_PROPERTY_ID);
+    AnalyticsWrapper.showLogs();
   }
-
   private static Context getContext(){
     return instance;
-  }
-
-
-  public static synchronized void initialize() {
-    wrapper = new AnalyticsWrapper(getContext(),GA_PROPERTY_ID);
-  }
-
-  public static AnalyticsWrapper getWrapper() {
-    return wrapper;
   }
 }
