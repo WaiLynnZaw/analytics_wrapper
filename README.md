@@ -1,3 +1,6 @@
+[![Bintray](https://img.shields.io/badge/jcenter-v0.0.2-brightgreen.svg?maxAge=2592000)](https://bintray.com/wailynnzaw/maven/GAWrappper)
+[![Hex.pm](https://img.shields.io/badge/size-7.36KB-blue.svg)]()
+
 # Google Analytics Wrapper
 
 Easily integrate Google Analytics into your android app without downloading any of the Google SDKs.
